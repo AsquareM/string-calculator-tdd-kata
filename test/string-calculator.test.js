@@ -55,4 +55,12 @@ describe('String Calculator', () => {
     const result2 = add('2001,2,1000,4,234234234234,6,1233,8,12123,10')
     expect(result2).toBe(1030)
   })
+
+  it(`should support delimiters can be of any length with the following format: “//[delimiter]\n”`, () => {
+    const result1 = add('//[***]\n1***2***3')
+    expect(result1).toBe(6)
+
+    const result2 = add('//[ab]c]\n1ab]c2ab]c3')
+    expect(result2).toBe(6)
+  })
 })

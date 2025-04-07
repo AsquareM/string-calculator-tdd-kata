@@ -9,7 +9,15 @@ const add = (stringOfNumbers) => {
   }
 
   // Cleanup and conversion to array of numbers
-  const delimiter = stringOfNumbers.startsWith('//') ? stringOfNumbers.charAt(2) : ','
+  let delimiter = ','
+  if (stringOfNumbers.startsWith('//')) {
+    delimiter = stringOfNumbers.charAt(2)
+  }
+  const multiCharacterDelimiterMatch = stringOfNumbers.match(/\/\/\[(.*)\]\n/)
+  if (multiCharacterDelimiterMatch?.length > 0) {
+    delimiter = multiCharacterDelimiterMatch[1]
+  }
+
   const listOfStringOfNumbers = stringOfNumbers.replaceAll('\n', delimiter).replace(`//${delimiter}`, '').split(delimiter)
 
   const negatives = []

@@ -39,4 +39,12 @@ describe('String Calculator', () => {
     const result2 = add('//;2;3;4;5;6;')
     expect(result2).toBe(20)
   })
+
+  it('should throw an error for negative numbers', () => {
+    const result1 = () => add('-1,2')
+    expect(result1).toThrow('Negative numbers not allowed: -1')
+
+    const result2 = () => add('1,-2,3,-4,-8')
+    expect(result2).toThrow('Negative numbers not allowed: -2, -4, -8')
+  })
 })

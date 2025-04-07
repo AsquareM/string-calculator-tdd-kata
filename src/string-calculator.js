@@ -6,6 +6,10 @@ const add = (stringOfNumbers) => {
   if (stringOfNumbers.length === 1) {
     return parseInt(stringOfNumbers)
   }
+
+  const listOfStringOfNumbers = stringOfNumbers.split(',')
+  const sum = listOfStringOfNumbers.reduce((acc, curr) => acc + parseInt(curr), 0)
+  return sum
 }
 
-module.exports = add;
+module.exports = add

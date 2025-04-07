@@ -18,4 +18,12 @@ describe('String Calculator', () => {
     const result2 = add('3,4,8,7,10,42')
     expect(result2).toBe(74)
   })
+
+  it('should support other delimiters', () => {
+    const result1 = add('1\n5\n10\n14', '\n')
+    expect(result1).toBe(30)
+
+    const result2 = add('3;4;8;7;10;42', ';')
+    expect(result2).toBe(74)
+  })
 })

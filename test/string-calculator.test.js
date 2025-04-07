@@ -19,19 +19,8 @@ describe('String Calculator', () => {
     expect(result2).toBe(74)
   })
 
-  it('should support other delimiters', () => {
-    const result1 = add('1\n5\n10\n14', '\n')
-    expect(result1).toBe(30)
-
-    const result2 = add('3;4;8;7;10;42', ';')
-    expect(result2).toBe(74)
-  })
-
-  it('should support edge case with string ending/starting with delimiters', () => {
-    const result1 = add(',2,3,4,5,6')
-    expect(result1).toBe(20)
-
-    const result2 = add('2;3;4;5;6;', ';')
-    expect(result2).toBe(20)
+  it('should support newline characters', () => {
+    const result1 = add('1\n5\n10,14,18')
+    expect(result1).toBe(48)
   })
 })

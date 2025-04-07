@@ -1,4 +1,4 @@
-const add = (stringOfNumbers, delimiter = ',') => {
+const add = (stringOfNumbers) => {
   if (stringOfNumbers === '') {
     return 0
   }
@@ -7,7 +7,7 @@ const add = (stringOfNumbers, delimiter = ',') => {
     return parseInt(stringOfNumbers)
   }
 
-  const listOfStringOfNumbers = stringOfNumbers.split(delimiter)
+  const listOfStringOfNumbers = stringOfNumbers.replaceAll('\n', ',').split(',')
   const sum = listOfStringOfNumbers.reduce((accumulator, current) => current === '' ? accumulator : accumulator + parseInt(current), 0)
   return sum
 }

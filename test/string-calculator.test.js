@@ -47,4 +47,12 @@ describe('String Calculator', () => {
     const result2 = () => add('1,-2,3,-4,-8')
     expect(result2).toThrow('Negative numbers not allowed: -2, -4, -8')
   })
+
+  it('should ignore numbers greater than 1000', () => {
+    const result1 = add('1001,2')
+    expect(result1).toBe(2)
+
+    const result2 = add('2001,2,1000,4,234234234234,6,1233,8,12123,10')
+    expect(result2).toBe(1030)
+  })
 })

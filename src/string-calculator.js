@@ -17,11 +17,12 @@ const add = (stringOfNumbers) => {
     number = parseInt(number)
     if (number < 0) {
       negatives.push(number)
+      return sum
     }
-    if (!isNaN(number)) {
-      sum += number
+    if (isNaN(number) || number > 1000) {
+      return sum
     }
-    return sum
+    return sum + number
   }, 0)
 
   if (negatives.length > 0) {

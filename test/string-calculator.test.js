@@ -26,4 +26,12 @@ describe('String Calculator', () => {
     const result2 = add('3;4;8;7;10;42', ';')
     expect(result2).toBe(74)
   })
+
+  it('should support edge case with string ending/starting with delimiters', () => {
+    const result1 = add(',2,3,4,5,6')
+    expect(result1).toBe(20)
+
+    const result2 = add('2;3;4;5;6;', ';')
+    expect(result2).toBe(20)
+  })
 })

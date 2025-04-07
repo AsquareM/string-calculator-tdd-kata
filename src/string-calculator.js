@@ -8,7 +8,7 @@ const add = (stringOfNumbers, delimiter = ',') => {
   }
 
   const listOfStringOfNumbers = stringOfNumbers.split(delimiter)
-  const sum = listOfStringOfNumbers.reduce((acc, curr) => acc + parseInt(curr), 0)
+  const sum = listOfStringOfNumbers.reduce((accumulator, current) => current === '' ? accumulator : accumulator + parseInt(current), 0)
   return sum
 }
 

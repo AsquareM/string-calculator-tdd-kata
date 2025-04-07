@@ -25,10 +25,10 @@ describe('String Calculator', () => {
   })
 
   it('should support other delimiters', () => {
-    const result1 = add('//"1"5"10\n14')
+    const result1 = add('//"\n1"5"10\n14')
     expect(result1).toBe(30)
 
-    const result2 = add('//;3;4;8\n7\n10;42')
+    const result2 = add('//;\n3;4;8\n7\n10;42')
     expect(result2).toBe(74)
   })
 
@@ -36,7 +36,7 @@ describe('String Calculator', () => {
     const result1 = add(',2,3,4,5,6')
     expect(result1).toBe(20)
 
-    const result2 = add('//;2;3;4;5;6;')
+    const result2 = add('//;\n2;3;4;5;6;')
     expect(result2).toBe(20)
   })
 
@@ -62,5 +62,14 @@ describe('String Calculator', () => {
 
     const result2 = add('//[ab]c]\n1ab]c2ab]c3')
     expect(result2).toBe(6)
+  })
+
+
+  it(`should support multiple delimiters with the following format: “//[delimiter1][delimiter2]\n”`, () => {
+    const result1 = add('//[*][%]\n1*2%3')
+    expect(result1).toBe(6)
+
+    const result2 = add('//[***][%%%%]\n1***2%%%%3***4%%%%5')
+    expect(result2).toBe(15)
   })
 })

@@ -47,14 +47,19 @@ const add = (stringOfNumbers) => {
   // calculating sum while handling edge cases
   const negatives = []
   const sum = listOfStringOfNumbers.reduce((sum, number) => {
+    if (/[a-zA-Z]/.test(number))
+      throw new Error(`Alphabets are not allowed`)
+
     number = parseInt(number)
     if (number < 0) {
       negatives.push(number)
       return sum
     }
+
     if (isNaN(number) || number > 1000) {
       return sum
     }
+    
     return sum + number
   }, 0)
 

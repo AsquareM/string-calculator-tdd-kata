@@ -72,4 +72,9 @@ describe('String Calculator', () => {
     const result2 = add('//[***][%%%%]\n1***2%%%%3***4%%%%5')
     expect(result2).toBe(15)
   })
+
+  it(`should throw an error when alphabets are written in the string`, () => {
+    const result = () => add('1,a,2')
+    expect(result).toThrow('Alphabets are not allowed')
+  })
 })

@@ -18,7 +18,7 @@ const add = (stringOfNumbers) => {
   // handling custom delimiters (string is in the format: //[delimiter]\n[numbers])
   let { delimiter, stringWithoutInitialDelimiter } = _parseDelimiter(stringOfNumbers)
   const listOfNumbers = _splitStringToNumbers(stringWithoutInitialDelimiter, delimiter)
-  const sum = _calculateSum(listOfNumbers)
+  const sum = _calculateResult(listOfNumbers, delimiter)
 
   return sum
 }
@@ -71,9 +71,19 @@ const _splitStringToNumbers = (stringOfNumbers, delimiter) => {
 }
 
 // calculating sum while handling edge cases
-const _calculateSum = (listOfNumbers) => {
+const _calculateResult = (listOfNumbers, delimiter) => {
   const MAX_ALLOWED_NUMBER = 1000
+  let initial, operator;
   const listOfNegativeNumbers = []
+
+  if (typeof delimiter == 'string' && delimiter == '*') {
+    operator = 'multiply'
+    initial = 1
+  } else {
+    operator = 'add'
+    initial = 0
+  }
+
   const sum = listOfNumbers.reduce((sum, number) => {
     const ALPHABET_REGEX = /[a-zA-Z]/
     if (ALPHABET_REGEX.test(number))
@@ -89,8 +99,11 @@ const _calculateSum = (listOfNumbers) => {
       return sum
     }
     
-    return sum + number
-  }, 0)
+    if (operator == 'multiply')
+      return sum * number
+    else
+      return sum + number
+  }, initial)
 
   // throwing an error if there are negative numbers
   if (listOfNegativeNumbers.length > 0) {

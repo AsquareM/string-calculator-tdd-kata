@@ -77,4 +77,12 @@ describe('String Calculator', () => {
     const result = () => add('1,a,2')
     expect(result).toThrow('Alphabets are not allowed')
   })
+
+  it(`should multiple instead of add when delimiter is *`, () => {
+    const result1 = add('//*\n2,2,3')
+    expect(result1).toBe(12)
+
+    const result2 = add('//;\n2,2,3')
+    expect(result2).toBe(7)
+  })
 })
